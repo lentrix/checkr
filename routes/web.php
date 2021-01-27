@@ -17,4 +17,8 @@ Route::get('/backend', 'BackendController@index');
 
 Route::post('/questions', 'BackendController@createQuestion');
 Route::get('/questions/view/{question}', 'BackendController@viewQuestion');
-Route::get('/questions/deactivate/{question}', 'BackendController@deactivate');
+Route::post('/deactivate', 'BackendController@deactivate');
+
+Route::get('/', 'SiteController@index');
+Route::get('/user-view/{question}', 'SiteController@userView');
+Route::post('/answer', 'SiteController@storeAnswer');

@@ -9,6 +9,6 @@ class Question extends Model
     protected $fillable = ['question','active','lifespan'];
 
     public function responses() {
-        return $this->hasMany('App\Response');
+        return $this->hasMany('App\Response')->orderByRaw('lname, fname');
     }
 }

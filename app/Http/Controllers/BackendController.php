@@ -33,9 +33,22 @@ class BackendController extends Controller
         return view('backend.view', compact('question'));
     }
 
-    public function deactivate(Question $question) {
-        $question->active=0;
-        $question->save();
+    public function deactivate(Request $request) {
+        $this->validate($request, [
+            'user' => 'required',
+            'password' => 'required',
+            'question_id' => 'required|numeric'
+        ]);
+
+        $question = Question::find($request['question_id']);
+
+        if($request['user']=="lentrix" && $request['password']=="Quest") {
+            $question->active=0;
+            $question->save();
+        }else {
+            return redirect()->back()->with('Error', 'Invalid user credential');
+        }
+
         return redirect('/backend')->with('Info','A question has been deactivated.');
     }
 }

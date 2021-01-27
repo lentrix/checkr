@@ -24,6 +24,10 @@
                 @endif
             </div>
         </div>
+
+        <br>
+
+        <a href="{{url('/')}}" class="btn btn-info">Students View</a>
     </div>
     <div class="col-md-6">
         <div class="card bg-info text-white">
